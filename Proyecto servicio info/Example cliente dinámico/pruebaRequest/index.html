@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="axios.js"></script>
+</head>
+<body>  
+  <form id="submit">
+    <label>Title</label>
+    <input type="text" name="title" id="title" required="">
+    <label>Content</label>
+    <input type="text" name="content" id="content" required="">
+    <button type="submit">Enviar :v</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      
+    </tbody>
+  </table>
+ 
+  <script type="">
+    const tbody = document.getElementById('tbody')
+    const form = document.getElementById('submit')
+    const title = document.getElementById('title')
+    const content = document.getElementById('content')
+
+     
+    function addRow(data) {
+      const properyties = ['id', 'title', 'content', 'created']
+      let tr = document.createElement('tr')
+
+      properyties.forEach(property => {
+        let td = document.createElement('td')
+        td.textContent = data[property]
+        tr.appendChild(td)
+      })
+      console.log(tr)
+      tbody.appendChild(tr)
+    }
+    window.onload = () => {
+      window.axios.get('post.php')
+        .then(({data}) => {
+          data.forEach(row => {
+            addRow(row)
+          })
+        })
+    }
+
+    form.addEventListener('submit', function(ev) {
+      ev.preventDefault()
+
+      window.axios.post('post.php', { title: title.value, content: content.value })
+        .then(({data})=> {
+          addRow(data)
+        })
+    })
+  </script>
+</body>
+</html>

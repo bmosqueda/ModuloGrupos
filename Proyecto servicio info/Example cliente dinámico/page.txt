@@ -1,0 +1,5 @@
+get 		api/post?page=1&perpage=15	 	"Todos los post" 
+get 		api/post?id=1	"Posts cuyo id = al id recibido"
+post 		api/post 		"Agregar un post"
+put			api/post?id= 	"Actualizar post cuyo id = al id recibido"
+delete		api/post?id= 	"Borrar post cuyo id = al id recibido"

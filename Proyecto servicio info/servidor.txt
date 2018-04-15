@@ -1,0 +1,5 @@
+148.213.20.205
+puerto para sftp: 2222
+puerto http: 82
+user: serviciosu
+pass: s3rvicio0su2018
