@@ -6,25 +6,21 @@ $request = $_SERVER['REQUEST_METHOD'];
 
 if($request == 'GET')
 {
-	$users = PostUser::getAll("users");
-        foreach ($users as $user) {
-        	echo $user->id;
-        }
-    // echo json_encode(PostUser::getAll("users"));
-	/*echo "HOLAaa";
 	$param = isset($_GET['id']) ? $_GET['id'] : false;
     if ($param) 
     {
-    	echo "HOLA";
-        // echo json_encode(PostUser::getById($param));
+    	$user = PostUser::getById($param, "users")[0];
+    	echo $user->id."\n";
+    	echo $user->accountNumber."\n";
+    	echo $user->names."\n";
+    	echo $user->lastName."\n";
+    	echo $user->secondLastName."\n";
+    	echo $user->idCampus."\n";
+        echo json_encode($user);
     } 
     else 
     {
-        /*$users = PostUser::getById("users");
-        foreach ($users as $user) {
-        	echo $user;
-        }
-
-    }*/
+        echo json_encode(PostUser::getAll("users"));
+    }
 }
 ?>

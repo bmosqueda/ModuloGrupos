@@ -29,7 +29,7 @@ class Post
 	public static function getById($id, $tableName) 
 	{	
 		// Build database query
-		$sql = "select * from ".$tableName." where id = ?";
+		$sql = "select * from ".$tableName." where id=".$id;
 		
 		return self::getBySql($sql);
 	}

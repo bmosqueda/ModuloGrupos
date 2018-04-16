@@ -1,18 +1,18 @@
 Usuario
 {
 	+ id: int
-	+ numeroCuenta: int
-	+ nombre: string
-	+ apellidoPaterno: string
-	+ apellidoMaterno: string
-	+ correo: string
-	+ idPlantel: int 
+	+ accountNumber: string
+	+ names: string
+	+ lastName: string
+	+ secondLastName: string
+	+ email: string
+	+ idCampus: int 
 }
 
 RolUsuarios
 {
 	+ id: int 
-	+ idUsuario: int 
+	+ idUser: int 
 	+ idRol: int 
 }
 
@@ -20,7 +20,7 @@ RolUsuarios
 Rol
 {
 	+ id: int 
-	+ tipo: string
+	+ type: string
 }
 
 //Incluye facultades y bachilleratos
