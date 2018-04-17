@@ -13,8 +13,7 @@
 </head>
 	
 <body>
-	<div style="background-color: #70A225">
-			href="<?php echo VIEW_PATH.'index.wiew.php'?>" style=" width: 616px; height: 135px;">
+	<div style="background-color: #70A225; width: 600px; height: 140px;">
 	</div>
 		<br>
 	<div class="container">

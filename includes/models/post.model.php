@@ -2,6 +2,13 @@
 
 class Post 
 {	
+	public function toUTF8($objects)
+	{
+		foreach ($objects as $object)
+			foreach ($object as $prop => $value)
+				$object->$prop = utf8_encode($value);
+	}
+
 	public static function getBySql($sql) 
 	{
 		//Comment

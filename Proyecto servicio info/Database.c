@@ -1,4 +1,4 @@
-Usuario
+Users
 {
 	+ id: int
 	+ accountNumber: string
@@ -9,7 +9,7 @@ Usuario
 	+ idCampus: int 
 }
 
-RolUsuarios
+RolUsers
 {
 	+ id: int 
 	+ idUser: int 
@@ -24,29 +24,29 @@ Rol
 }
 
 //Incluye facultades y bachilleratos
-Plantel
+Campus
 {
 	+ id: int 
-	+ nombre: string
+	+ name: string
 }
 
-CarreraArea //Para los bachilleratos se manejará como área
+CarrerArea //Para los bachilleratos se manejará como área
 {
 	+ id: int
 	+ plan: string	//Es como una mátricula única
-	+ nombre: string
-	+ idPlantel: int
+	+ name: strig
+	+ idCampus: int
 }
 
-Alumno //El alumno es un usuario o qué es el autoregristro
+Student //El alumno es un usuario o qué es el autoregristro
 {
 	+ int: id
-	+ numeroCuenta: int 
-	+ apellido paterno: string
-	+ apellido materno: string
-	+ correo: string
-	+ nombre: string
-	+ idTipoAlumno: int 
+	+ accountNumber: int 
+	+ lastName: string
+	+ secondLastName: string
+	+ email: string
+	+ name: string
+	+ idTypeStudent: int 
 }
 
 /*//{normal, invitado, irregular, intercambio }
@@ -62,43 +62,43 @@ Profesor
 	+ idMateria: int
 }*/
 
-Materia//Como los profesores pueden tener muchos grupos y los grupos muchos profesores se crea esta tabla intermediaria
+Course//Como los profesores pueden tener muchos grupos y los grupos muchos profesores se crea esta tabla intermediaria
 {
 	+ id: int 
-	+ idGrupo: int 
+	+ idGroup: int 
 	//+ idUsuario: int //Profesor
-	+ string: nombre
+	+ name: string
 }
 
-MateriasProfesor
+CoursesTeachers
 {
 	+ id: int 
-	+ idProfesor: int 
-	+ idMateria: int 
+	+ idUser: int 
+	+ idCourse: int 
 }
 
-Grupo
+Groups
 {
 	+ int: id
-	+ grado: int
-	+ grupo: char
-	+ generación: Date	//o fecha de inicio de la generación
-	+ periodos: int	
-	+ idCarrera: int
-	+ esOficial: bool 	//Porque se podrá dar de alta grupos no oficiales
+	+ grade: int
+	+ group: char
+	+ generation: string	//o fecha de inicio de la generación
+	+ periods: int	
+	+ idCarrerArea: int
+	+ isOficial: bool 	//Porque se podrá dar de alta grupos no oficiales
 }
 
-GruposAlumno
+StudentsGroups
 {
 	+ id: int 
-	+ idAlumno: int 
-	+ idGrupo: int 
+	+ idStudent: int 
+	+ idGroup: int 
 }
 
-LogBajas //Cómo se gestiona esto, en una tabla o en arvhivos de texto
+Lows
 {
 	+ int: id
-	+ usuario: int
-	+ alumno: int
-	+ fechaBaja: Date
+	+ idUser: int
+	+ studentsName: int
+	+ date: Date
 }

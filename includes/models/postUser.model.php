@@ -46,7 +46,8 @@ class PostUser extends Post
 		// Close database connection
 		$database->close();
 
-		return self::getById($lastId);
+		// return self::getById($lastId);
+		return $lastId;
 	}
 
 	public function update()
