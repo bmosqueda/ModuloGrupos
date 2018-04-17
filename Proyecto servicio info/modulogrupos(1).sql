@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-04-2018 a las 22:53:33
+-- Tiempo de generación: 17-04-2018 a las 23:54:27
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.2.0
 
@@ -91,6 +91,18 @@ CREATE TABLE `groups` (
   `periods` int(11) NOT NULL,
   `idCarrerArea` int(11) NOT NULL,
   `isOficial` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `groupsuser`
+--
+
+CREATE TABLE `groupsuser` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idGroup` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -249,6 +261,14 @@ ALTER TABLE `groups`
   ADD KEY `idCarrerArea` (`idCarrerArea`);
 
 --
+-- Indices de la tabla `groupsuser`
+--
+ALTER TABLE `groupsuser`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idGroup` (`idGroup`),
+  ADD KEY `idUser` (`idUser`);
+
+--
 -- Indices de la tabla `lows`
 --
 ALTER TABLE `lows`
@@ -323,6 +343,12 @@ ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `groupsuser`
+--
+ALTER TABLE `groupsuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -374,6 +400,13 @@ ALTER TABLE `coursesteachers`
 --
 ALTER TABLE `groups`
   ADD CONSTRAINT `groups_ibfk_1` FOREIGN KEY (`idCarrerArea`) REFERENCES `carrerarea` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `groupsuser`
+--
+ALTER TABLE `groupsuser`
+  ADD CONSTRAINT `groupsuser_ibfk_1` FOREIGN KEY (`idGroup`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `groupsuser_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `lows`

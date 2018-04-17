@@ -49,6 +49,13 @@ Student //El alumno es un usuario o qué es el autoregristro
 	+ idTypeStudent: int 
 }
 
+GroupsUser
+{
+	id: int
+	idUser: int 
+	idGroup: int 
+}
+
 /*//{normal, invitado, irregular, intercambio }
 Tipo de alumno
 {
