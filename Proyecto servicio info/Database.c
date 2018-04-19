@@ -2,14 +2,14 @@ Users
 {
 	+ id: int
 	+ accountNumber: string
-	+ names: string
+	+ name: string
 	+ lastName: string
 	+ secondLastName: string
 	+ email: string
 	+ idCampus: int 
 }
 
-RolUsers
+RolsUsers
 {
 	+ id: int 
 	+ idUser: int 
@@ -17,7 +17,7 @@ RolUsers
 }
 
 //Roles{master, administrador, coordinador, profesor}
-Rol
+Rols
 {
 	+ id: int 
 	+ type: string
@@ -30,33 +30,33 @@ Campus
 	+ name: string
 }
 
-CarrerArea //Para los bachilleratos se manejará como área
+CarrersAreas //Para los bachilleratos se manejará como área
 {
 	+ id: int
+	+ idCampus: int
 	+ plan: string	//Es como una mátricula única
 	+ name: strig
-	+ idCampus: int
 }
 
-Student //El alumno es un usuario o qué es el autoregristro
+Students //El alumno es un usuario o qué es el autoregristro
 {
 	+ int: id
 	+ accountNumber: int 
+	+ name: string
 	+ lastName: string
 	+ secondLastName: string
 	+ email: string
-	+ name: string
-	+ idTypeStudent: int 
+	+ typeStudent: int 
 }
 
-GroupsUser
+UnofficialGroups
 {
 	id: int
 	idUser: int 
 	idGroup: int 
 }
-
-/*//{normal, invitado, irregular, intercambio }
+/*
+//{normal, invitado, irregular, intercambio }
 Tipo de alumno
 {
 	+ id: int 
@@ -69,12 +69,12 @@ Profesor
 	+ idMateria: int
 }*/
 
-Course//Como los profesores pueden tener muchos grupos y los grupos muchos profesores se crea esta tabla intermediaria
+Courses//Como los profesores pueden tener muchos grupos y los grupos muchos profesores se crea esta tabla intermediaria
 {
 	+ id: int 
+	+ name: string
 	+ idGroup: int 
 	//+ idUsuario: int //Profesor
-	+ name: string
 }
 
 CoursesTeachers
