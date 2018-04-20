@@ -7,7 +7,7 @@
 
   	<script src="<?php echo JS_PATH.'jquery.js' ?>"></script>
   	<script src="<?php echo JS_PATH.'axios.js' ?>"></script>
-  	<link href="<?php echo BOOTSTRAP_PATH.DS.'css'.DS.'bootstrap.min.css' ?>" rel="stylesheet" media="screen"></style>
+  	<link href="<?php echo BOOTSTRAP_PATH.DS.'css'.DS.'bootstrap.min.css' ?>" rel="stylesheet" media="screen">
   	<script src="<?php echo BOOTSTRAP_PATH.DS.'js'.DS.'bootstrap.min.js'?>"></script>
   	<script src="axios.js"></script>
 </head>
