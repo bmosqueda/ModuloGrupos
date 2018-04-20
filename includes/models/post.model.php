@@ -47,7 +47,6 @@ class Post
 
 	public function delete($id, $tableName) 
 	{
-
 		// Initialize affected rows
 		$affected_rows = FALSE;
 	

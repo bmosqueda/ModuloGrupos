@@ -69,6 +69,13 @@ else if($request == 'POST')
             http_response_code(500);
         }
     } 
+    else if($_GET['id'] && $_GET['idRol'])
+    {
+        //Cuando se le va a agregar otro rol a un usuario existente
+        $result = PostUser::insertRolUser($_GET['id'], $_GET['idRol']);
+
+        echo json_encode($result);
+    }
     else 
     {
         http_response_code(403);
@@ -110,16 +117,25 @@ else if($request == "DELETE")
     $param = isset($_GET['id']) ? $_GET['id'] : false; 
     if($param) 
     {
-        $post = new PostUser();
+        if(!isset($_GET['idRol']))
+        {
+            $post = new PostUser();
 
-        $result = $post->delete($_GET['id'], "users");
-        if ($result) 
+            $result = $post->delete($_GET['id'], "users");
+            if ($result) 
+            {
+                echo $result;
+            } 
+            else 
+            {
+                http_response_code(500);
+            }
+        }
+        else
         {
+            //Borrar un rol a un usuario
+            $result = PostUser::deleteUserRol($_GET['id'], $_GET['idRol']);
             echo $result;
-        } 
-        else 
-        {
-            http_response_code(500);
         }
     } 
     else 

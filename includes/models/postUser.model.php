@@ -122,6 +122,43 @@ class PostUser extends Post
 		return $affected_rows;
 	}
 
+	public static function deleteUserRol($idUser, $idRol)
+	{
+		// Initialize affected rows
+		$affected_rows = FALSE;
+	
+		// Build database query
+		$sql = "delete from rolsusers where idUser = ? and idRol = ?";
+		
+		// Open database connection
+		$database = new Database();
+		
+		// Get instance of statement
+		$statement = $database->stmt_init();
+		
+		// Prepare query
+		if ($statement->prepare($sql)) {
+			
+			// Bind parameters
+			$statement->bind_param('ii', $idUser, $idRol);
+			
+			// Execute statement
+			$statement->execute();
+			
+			// Get affected rows
+			$affected_rows = $database->affected_rows;
+				
+			// Close statement
+			$statement->close();
+		}
+		
+		// Close database connection
+		$database->close();
+
+		// Return affected rows
+		return $affected_rows;
+	}
+
 	public static function getUsersByRol($idRol)
 	{
 		$sql = "select * from users left join rolsusers on rolsusers.idUser =  users.id WHERE rolsusers.idRol = ".$idRol;
