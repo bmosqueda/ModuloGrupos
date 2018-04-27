@@ -44,3 +44,5 @@ defined('BOOTSTRAP_PATH') ? NULL : define('BOOTSTRAP_PATH', JS_PATH.'bootstrap'.
 require_once(FUNCTION_PATH.'functions.inc.php');
 require_once(LIB_PATH.'database.class.php');
 require_once(MODEL_PATH.'postUser.model.php');
+require_once(MODEL_PATH.'postStudent.model.php');
+require_once(MODEL_PATH.'postGroup.model.php');

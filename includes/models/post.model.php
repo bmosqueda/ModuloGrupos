@@ -88,4 +88,11 @@ class Post
 		$sql = "select * from ".$tableName;
 		return self::getBySql($sql);
 	}
+
+	//Only for users and students
+	public static function getByName($tableName, $completeName)
+	{
+		$sql = "SELECT * FROM ".$tableName." WHERE CONCAT_WS(' ', name, lastName, secondLastName) LIKE '%".$completeName."%'";
+		return self::getBySql($sql);
+	}
 }

@@ -8,12 +8,11 @@ if($request == 'GET')
 {
     if(!isset($_GET['idRol']))
     {
-        $param = isset($_GET['id']) ? $_GET['id'] : false;
-        if ($param) 
+        if (isset($_GET['id']))
         {
             if(!isset($_GET['rolsUser']))
             {
-                $user = PostUser::getById($param, "users");
+                $user = PostUser::getById($_GET['id'], "users");
                 PostUser::toUTF8($user);
 
                 echo json_encode($user);
@@ -26,18 +25,25 @@ if($request == 'GET')
                 echo json_encode($rolsUser);    
             }
         } 
-        else 
+        else if(!isset($_GET['byName']))
         {
             $users = PostUser::getAll("users");
             PostUser::toUTF8($users);
 
             echo json_encode($users);
         }
+        else
+        {
+            //Acepta espacios o _ para separar nombre de apellidos, etc
+            $usersByName = PostUser::getByName("users", $_GET['byName']);
+            PostUser::toUTF8($usersByName);
+
+            echo json_encode($usersByName); 
+        }
     }
     else
     {   
-        $rol = $_GET['idRol'];
-        $usersByRol = PostUser::getUsersByRol($rol);
+        $usersByRol = PostUser::getUsersByRol($_GET['idRol']);
         PostUser::toUTF8($usersByRol);
 
         echo json_encode($usersByRol);
